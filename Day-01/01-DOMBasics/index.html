@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Greeting App</title>
-</head>
-<body>
-    <input type="text" name="" id="txtName">
-    <input type="button" value="Greet" id="btnGreet">
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Greeting App</title>
+        <script>
+            function greet(){
+                //var vbody = window.document.children[0].children[1]
+                //var vtxtBox = vbody.children[0]
+                var vtxtBox = document.getElementById("txtName");
+                var greetMsg = "Hi " + vtxtBox.value;
+                //alert(greetMsg);
+                
+                var vGreetBox = document.getElementById("greetBox");
+                vGreetBox.innerHTML = greetMsg;
+            }
+            function initialize(){
+                console.log("initialize is invoked");
+                var btnGreet = document.getElementById("btnGreet");
+                btnGreet.addEventListener("click",greet);
+            }
+            window.addEventListener("DOMContentLoaded",initialize);
+            
+        </script>
+    </head>
+    <body>
+        <input type="text" name="" id="txtName">
+        <input type="button" value="Greet" id="btnGreet" >
+        <div id="greetBox">[Greeting message will be displayed here]</div>
+        <script>
+            
+        </script>
+    </body>
 </html>
