@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <style>
+        .completed{
+            color : red;
+            text-decoration: line-through;
+            font-style: italic;
+        }
+        #divMessage{
+            position : absolute;
+            bottom: 0px;
+            right: 0px;
+            margin: 5px;
+            border: 2px solid black;
+            border-radius: 3px;
+            padding: 5px;
+            background-color: #e7e7e7;
+            font-weight: bold;
+        }
+    </style>
+    <script src="jquery-2.1.1.js"></script>
+    <script>
+        $(function initialize(){
+            $("#btnAddTask").click(onBtnAddTaskClick);
+            $("#btnRemoveCompleted").click(onBtnRemoveCompleted);
+            $("#divMessage").hide();
+        });
+        function onBtnAddTaskClick(){
+            $("<li></li>")
+                .html($("#txtTask").val())
+                .click(onTaskItemClick)
+                .hide()
+                .prependTo("#olTaskList")
+                .slideDown('slow');
+            $("#txtTask").val("");
+            displayMessage("A new task is added!");
+        }
+        function onTaskItemClick(){
+             $(this).toggleClass("completed");
+        }
+        function onBtnRemoveCompleted(){
+            $("#olTaskList > li.completed").fadeOut(300, function(){
+                $(this).remove();
+            });
+            displayMessage("Zero or more completed tasks are removed");
+        }
+        function displayMessage(msg){
+            $("#divMessage").html(msg).slideDown(400).delay(3000).slideUp(400);
+        }
+    </script>
+</head>
+<body>
+    <h1>Task Manager</h1>
+    <hr>
+    <label for="">Task :</label>
+    <input type="text" name="" id="txtTask">
+    <input type="button" value="Add Task" id="btnAddTask">
+    <input type="button" value="Remove Completed" id="btnRemoveCompleted">
+    <ol id="olTaskList">
+
+    </ol>
+    <div id="divMessage">[messages will be displayed here]</div>
+</body>
+</html>
