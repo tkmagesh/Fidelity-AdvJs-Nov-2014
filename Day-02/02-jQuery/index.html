@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Greeting App</title>
+        <script src="jquery-2.1.1.js"></script>
+        <script>
+            function greet(){
+               var greetMsg = "Hi " + $("#txtName").val();
+               $("#greetBox").html(greetMsg);
+            }
+            $(function (){
+                console.log("initialize is invoked");
+                $("#btnGreet").click(greet);
+            });
+            //window.addEventListener("DOMContentLoaded",initialize);
+            //$(document).ready(initialize);
+            //$(initialize);
+
+        </script>
+    </head>
+    <body>
+        <input type="text" name="" id="txtName">
+        <input type="button" value="Greet" id="btnGreet" >
+        <div id="greetBox">[Greeting message will be displayed here]</div>
+        <script>
+
+        </script>
+    </body>
+</html>
